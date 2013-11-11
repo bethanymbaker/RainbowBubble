@@ -16,7 +16,7 @@
 @implementation RainbowBubbleView
 
 - (void)animate
-{        
+{
     [NSTimer scheduledTimerWithTimeInterval:1.0/30.0 target:self selector:@selector(animate) userInfo:NULL repeats:NO];
     [self setNeedsDisplay];
 }
@@ -48,8 +48,8 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    [self drawBubbles];
     [self moveBubbles];
+    [self drawBubbles];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
