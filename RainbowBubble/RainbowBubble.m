@@ -9,8 +9,6 @@
 #import "RainbowBubble.h"
 
 @interface RainbowBubble()
-@property (nonatomic) float xCoord;
-@property (nonatomic) float yCoord;
 @property (nonatomic) float dx;
 @property (nonatomic) float dy;
 @property (nonatomic) float height;
@@ -36,9 +34,7 @@
             self.width = 40.0*(float)drand48() + 10.0;
             self.height = 40.0*(float)drand48() + 10.0;
         }
-        self.xCoord = locationOfTouch.x;
-        self.yCoord = locationOfTouch.y;
-        self.frame = CGRectMake(self.xCoord, self.yCoord, self.width, self.height);
+        self.frame = CGRectMake(locationOfTouch.x, locationOfTouch.y, self.width, self.height);
         
         self.color = [UIColor colorWithRed:(float)drand48()
                                           green:(float)drand48()
@@ -64,18 +60,14 @@
 }
 - (void)moveBubble;
 {
-    // Check that bubble is within the viewFrame
-    if (CGRectContainsRect(self.viewFrame,CGRectMake(self.xCoord+self.dx, self.yCoord, self.width+self.dx, self.height))==FALSE) {
+    // Check that bubble is within the viewFrame and move the bubble
+    if (CGRectContainsRect(self.viewFrame,CGRectOffset(self.frame, self.dx, 0.0))==FALSE) {
         self.dx = -self.dx;
     }
-    if (CGRectContainsRect(self.viewFrame,CGRectMake(self.xCoord, self.yCoord+self.dy, self.width, self.height+self.dy))==FALSE) {
+    if (CGRectContainsRect(self.viewFrame,CGRectOffset(self.frame, 0.0, self.dy))==FALSE) {
         self.dy = -self.dy;
     }
-    
-    // Move bubble
-    self.xCoord += self.dx;
-    self.yCoord += self.dy;
-    self.frame = CGRectMake(self.xCoord, self.yCoord, self.width, self.height);
+    self.frame = CGRectOffset(self.frame, self.dx, self.dy);
 }
 
 @end
