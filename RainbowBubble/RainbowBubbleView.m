@@ -48,8 +48,8 @@
 
 - (void)drawRect:(CGRect)rect
 {
-    [self drawBubbles];
     [self moveBubbles];
+    [self drawBubbles];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
