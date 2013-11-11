@@ -7,11 +7,11 @@
 //
 
 #import "RainbowBubbleViewController.h"
-
 #import "RainbowBubbleView.h"
+#import "BackgroundColorButton.h"
 
 @interface RainbowBubbleViewController ()
-
+@property (weak, nonatomic) IBOutlet UIButton *mosaicButton;
 @end
 
 @implementation RainbowBubbleViewController
@@ -23,6 +23,12 @@
     RainbowBubbleView *rainbowBubbleView = [[RainbowBubbleView alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     [rainbowBubbleView animate];
     self.view = rainbowBubbleView;
+    
+    // Make button to change background color
+    self.mosaicButton = [BackgroundColorButton buttonWithType:UIButtonTypeCustom];
+    self.mosaicButton.frame = CGRectMake(5, 5, 20, 20);
+    [self.view addSubview:self.mosaicButton];
+
     
     // Seed random number for bubble generation
     srand48(time(0));
