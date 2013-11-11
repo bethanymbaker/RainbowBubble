@@ -30,23 +30,23 @@
         
         self.viewFrame = viewFrame;
         if (YES) {
-            self.width = 40.0*(float)rand() / RAND_MAX + 10.0;
+            self.width = 40.0*(float)drand48() + 10.0;
             self.height = self.width;
         } else {
-            self.width = 40.0*(float)rand() / RAND_MAX + 10.0;
-            self.height = 40.0*(float)rand() / RAND_MAX + 10.0;
+            self.width = 40.0*(float)drand48() + 10.0;
+            self.height = 40.0*(float)drand48() + 10.0;
         }
         self.xCoord = locationOfTouch.x;
         self.yCoord = locationOfTouch.y;
         self.frame = CGRectMake(self.xCoord, self.yCoord, self.width, self.height);
         
-        UIColor * color = [UIColor colorWithRed:(float)rand() / RAND_MAX
-                                          green:(float)rand() / RAND_MAX
-                                           blue:(float)rand() / RAND_MAX
-                                          alpha:(float)rand() / RAND_MAX];
+        UIColor * color = [UIColor colorWithRed:(float)drand48()
+                                          green:(float)drand48()
+                                           blue:(float)drand48()
+                                          alpha:(float)drand48()];
         self.color = color;
-        self.dx = 10.0*(float)rand() / RAND_MAX - 5.0;
-        self.dy = 10.0*(float)rand() / RAND_MAX - 5.0;
+        self.dx = 10.0*(float)drand48() - 5.0;
+        self.dy = 10.0*(float)drand48() - 5.0;
         
     }
     if (CGRectContainsRect(self.viewFrame, self.frame)) {

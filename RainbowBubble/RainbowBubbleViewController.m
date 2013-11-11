@@ -23,8 +23,9 @@
     RainbowBubbleView *rainbowBubbleView = [[RainbowBubbleView alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
     [rainbowBubbleView animate];
     [self.view addSubview:rainbowBubbleView];
-
-     
+    
+    // Seed random number for bubble generation
+    srand48(time(0));
 }
 - (void)didReceiveMemoryWarning
 {
