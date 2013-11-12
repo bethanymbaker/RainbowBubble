@@ -21,6 +21,13 @@
 
 @implementation RainbowBubble
 
+- (void)changeColor
+{
+    self.color = [UIColor colorWithRed:(float)drand48()
+                                 green:(float)drand48()
+                                  blue:(float)drand48()
+                                 alpha:(float)drand48()];
+}
 - (id)initWithLocationOfTouch:(CGPoint)locationOfTouch andViewFrame:(CGRect)viewFrame;
 {
     self = [super init];

@@ -1,5 +1,5 @@
 //
-//  BackgroundColorButton.h
+//  ColorButton.h
 //  RainbowBubble
 //
 //  Created by Bethany Simmons on 11/11/13.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BackgroundColorButton : UIButton
+@interface ColorButton : UIButton
 
 @end

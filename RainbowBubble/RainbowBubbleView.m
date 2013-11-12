@@ -14,7 +14,12 @@
 @end
 
 @implementation RainbowBubbleView
-
+- (void)changeBubbleColors
+{
+    for (RainbowBubble *bubble in self.rainbowBubbles) {
+        [bubble changeColor];
+    }
+}
 - (void)animate
 {
     [NSTimer scheduledTimerWithTimeInterval:1.0/30.0 target:self selector:@selector(animate) userInfo:NULL repeats:NO];

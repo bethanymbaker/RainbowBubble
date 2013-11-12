@@ -10,4 +10,5 @@
 
 @interface RainbowBubbleView : UIView
 - (void)animate;
+- (void)changeBubbleColors;
 @end

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		69896F7A18313A3A006B7AFF /* BackgroundColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 69896F7918313A3A006B7AFF /* BackgroundColorButton.m */; };
+		69896F7A18313A3A006B7AFF /* ColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 69896F7918313A3A006B7AFF /* ColorButton.m */; };
 		69E5E337182DFEC600C2560B /* RainbowBubble.m in Sources */ = {isa = PBXBuildFile; fileRef = 69E5E336182DFEC600C2560B /* RainbowBubble.m */; };
 		69ECA16E182DA61200A9FEA4 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69ECA16D182DA61200A9FEA4 /* UIKit.framework */; };
 		69ECA170182DA61200A9FEA4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69ECA16F182DA61200A9FEA4 /* Foundation.framework */; };
@@ -25,8 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		69896F7818313A3A006B7AFF /* BackgroundColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundColorButton.h; sourceTree = "<group>"; };
-		69896F7918313A3A006B7AFF /* BackgroundColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundColorButton.m; sourceTree = "<group>"; };
+		69896F7818313A3A006B7AFF /* ColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorButton.h; sourceTree = "<group>"; };
+		69896F7918313A3A006B7AFF /* ColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorButton.m; sourceTree = "<group>"; };
 		69E5E335182DFEC600C2560B /* RainbowBubble.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RainbowBubble.h; sourceTree = "<group>"; };
 		69E5E336182DFEC600C2560B /* RainbowBubble.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RainbowBubble.m; sourceTree = "<group>"; };
 		69ECA169182DA61200A9FEA4 /* RainbowBubble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RainbowBubble.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,8 +105,8 @@
 				69ECA19E182DAA5400A9FEA4 /* RainbowBubbleView.m */,
 				69E5E335182DFEC600C2560B /* RainbowBubble.h */,
 				69E5E336182DFEC600C2560B /* RainbowBubble.m */,
-				69896F7818313A3A006B7AFF /* BackgroundColorButton.h */,
-				69896F7918313A3A006B7AFF /* BackgroundColorButton.m */,
+				69896F7818313A3A006B7AFF /* ColorButton.h */,
+				69896F7918313A3A006B7AFF /* ColorButton.m */,
 			);
 			path = RainbowBubble;
 			sourceTree = "<group>";
@@ -198,7 +198,7 @@
 				69ECA187182DA61200A9FEA4 /* RainbowBubbleViewController.m in Sources */,
 				69ECA19F182DAA5400A9FEA4 /* RainbowBubbleView.m in Sources */,
 				69E5E337182DFEC600C2560B /* RainbowBubble.m in Sources */,
-				69896F7A18313A3A006B7AFF /* BackgroundColorButton.m in Sources */,
+				69896F7A18313A3A006B7AFF /* ColorButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

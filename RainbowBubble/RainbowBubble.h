@@ -12,4 +12,5 @@
 - (id)initWithLocationOfTouch:(CGPoint)locationOfTouch andViewFrame:(CGRect)viewFrame;
 - (void)drawBubble;
 - (void)moveBubble;
+- (void)changeColor;
 @end
