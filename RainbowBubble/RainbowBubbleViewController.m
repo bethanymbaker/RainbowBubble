@@ -21,9 +21,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-
+}
+- (void)loadView
+{
+    [super loadView];
     self.rainbowBubbleView = [[RainbowBubbleView alloc]initWithFrame:[[UIScreen mainScreen]bounds]];
-    [self.rainbowBubbleView animate];
     [self.view addSubview:self.rainbowBubbleView];
      
     // Make button to change background color
@@ -39,6 +41,7 @@
     [self.bubblesButton setTitle:@"bubblesButton" forState:UIControlStateNormal];
     [self.bubblesButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.bubblesButton];
+    
     
     // Seed random number for bubble generation
     srand48(time(0));

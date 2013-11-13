@@ -47,6 +47,7 @@
         self.opaque = YES;
         self.backgroundColor = [UIColor grayColor];
         self.rainbowBubbles = [[NSMutableArray alloc]init];
+        [self animate];
     }
     return self;
 }
@@ -65,5 +66,6 @@
     if (rainbowBubble) {
         [self.rainbowBubbles addObject:rainbowBubble];
     }
+
 }
 @end
