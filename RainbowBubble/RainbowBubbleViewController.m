@@ -13,6 +13,7 @@
 @interface RainbowBubbleViewController ()
 @property (weak, nonatomic) IBOutlet UIButton *backgroundButton;
 @property (weak, nonatomic) IBOutlet UIButton *bubblesButton;
+@property (weak, nonatomic) IBOutlet UIButton *clearButton;
 @property (strong, nonatomic) RainbowBubbleView *rainbowBubbleView;
 @end
 
@@ -42,6 +43,12 @@
     [self.bubblesButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.bubblesButton];
     
+    // Add a button to clear bubbles
+    self.clearButton = [ColorButton buttonWithType:UIButtonTypeCustom];
+    self.clearButton.frame = CGRectOffset(self.backgroundButton.frame, 0, 80);
+    [self.clearButton setTitle:@"clearButton" forState:UIControlStateNormal];
+    [self.clearButton addTarget:self action:@selector(buttonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:self.clearButton];
     
     // Seed random number for bubble generation
     srand48(time(0));
@@ -63,6 +70,8 @@
         }
     } else if ([sender isEqual:self.bubblesButton]) {
         [self.rainbowBubbleView changeBubbleColors];
+    } else if ([sender isEqual:self.clearButton]) {
+        [self.rainbowBubbleView clearBubbles];
     }
     
 }

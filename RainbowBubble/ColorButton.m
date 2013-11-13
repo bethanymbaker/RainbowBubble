@@ -52,6 +52,13 @@
         
         CGContextSetFillColorWithColor(context, blueColor.CGColor);
         CGContextFillRect(context,CGRectMake(0, 16, 20, 4));
+    } else if ([self.currentTitle isEqual:@"clearButton"]) {
+        //CGContextSetFillColorWithColor(context, redColor.CGColor);
+        //CGContextFillRect(context, CGRectMake(0, 0, 20, 20));
+        
+        CGContextSetStrokeColorWithColor(context, redColor.CGColor);
+        CGContextStrokeRect(context, CGRectMake(0, 0, 20, 20));
+        
     }
 
 }

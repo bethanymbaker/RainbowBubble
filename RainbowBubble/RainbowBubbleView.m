@@ -14,6 +14,10 @@
 @end
 
 @implementation RainbowBubbleView
+- (void)clearBubbles
+{
+    [self.rainbowBubbles removeAllObjects];
+}
 - (void)changeBubbleColors
 {
     for (RainbowBubble *bubble in self.rainbowBubbles) {
@@ -66,6 +70,6 @@
     if (rainbowBubble) {
         [self.rainbowBubbles addObject:rainbowBubble];
     }
-
+    
 }
 @end

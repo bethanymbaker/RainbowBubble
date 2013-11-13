@@ -11,4 +11,5 @@
 @interface RainbowBubbleView : UIView
 - (void)animate;
 - (void)changeBubbleColors;
+- (void)clearBubbles;
 @end
