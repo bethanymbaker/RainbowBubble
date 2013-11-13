@@ -277,6 +277,7 @@
 		69ECA18E182DA61200A9FEA4 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RainbowBubble/RainbowBubble-Prefix.pch";
 				INFOPLIST_FILE = "RainbowBubble/RainbowBubble-Info.plist";
@@ -288,6 +289,7 @@
 		69ECA18F182DA61200A9FEA4 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "RainbowBubble/RainbowBubble-Prefix.pch";
 				INFOPLIST_FILE = "RainbowBubble/RainbowBubble-Info.plist";
