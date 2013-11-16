@@ -12,4 +12,6 @@
 - (void)animate;
 - (void)changeBubbleColors;
 - (void)clearBubbles;
+- (void)changeBackgroundColor;
+- (void)bubbleExplosion;
 @end

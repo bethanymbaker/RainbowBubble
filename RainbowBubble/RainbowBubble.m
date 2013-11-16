@@ -16,6 +16,7 @@
 @property (nonatomic) CGRect viewFrame;
 @property (nonatomic) CGRect frame;
 @property (strong, nonatomic) UIColor *color;
+@property (strong, nonatomic) UIColor *outlineColor;
 
 @end
 
@@ -27,6 +28,11 @@
                                  green:(float)drand48()
                                   blue:(float)drand48()
                                  alpha:(float)drand48()];
+    self.outlineColor = [UIColor colorWithRed:(float)drand48()
+                                 green:(float)drand48()
+                                  blue:(float)drand48()
+                                 alpha:(float)drand48()];
+    
 }
 - (id)initWithLocationOfTouch:(CGPoint)locationOfTouch andViewFrame:(CGRect)viewFrame;
 {
@@ -47,6 +53,10 @@
                                           green:(float)drand48()
                                            blue:(float)drand48()
                                           alpha:(float)drand48()];
+        self.outlineColor = [UIColor colorWithRed:(float)drand48()
+                                     green:(float)drand48()
+                                      blue:(float)drand48()
+                                     alpha:(float)drand48()];
         self.dx = 10.0*(float)drand48() - 5.0;
         self.dy = 10.0*(float)drand48() - 5.0;
         
@@ -61,7 +71,7 @@
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetStrokeColorWithColor(context, self.color.CGColor);
-    CGContextSetFillColorWithColor(context, self.color.CGColor);
+    CGContextSetFillColorWithColor(context, self.outlineColor.CGColor);
     CGContextStrokeEllipseInRect(context, self.frame);
     CGContextFillEllipseInRect(context, self.frame);
 }

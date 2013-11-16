@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface ColorButton : UIButton
-
+- (id)initWithFrame:(CGRect)frame title:(NSString *)title;
 @end

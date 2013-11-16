@@ -11,9 +11,28 @@
 
 @interface RainbowBubbleView ()
 @property (nonatomic) NSMutableArray *rainbowBubbles;
+@property (nonatomic) int numberOfBubbles;
 @end
 
 @implementation RainbowBubbleView
+- (void)bubbleExplosion
+{
+    if (self.numberOfBubbles==1) {
+        self.numberOfBubbles = 10;
+    } else {
+        self.numberOfBubbles = 1;
+    }
+}
+- (void)changeBackgroundColor
+{
+    if ([self.backgroundColor isEqual:[UIColor grayColor]]) {
+        self.backgroundColor = [UIColor blackColor];
+    } else if ([self.backgroundColor isEqual:[UIColor blackColor]]){
+        self.backgroundColor = [UIColor whiteColor];
+    } else {
+        self.backgroundColor = [UIColor grayColor];
+    }
+}
 - (void)clearBubbles
 {
     [self.rainbowBubbles removeAllObjects];
@@ -29,21 +48,18 @@
     [NSTimer scheduledTimerWithTimeInterval:1.0/30.0 target:self selector:@selector(animate) userInfo:NULL repeats:NO];
     [self setNeedsDisplay];
 }
-
 - (void)drawBubbles
 {
     for (RainbowBubble *bubble in self.rainbowBubbles) {
         [bubble drawBubble];
     }
 }
-
 - (void)moveBubbles
 {
     for (RainbowBubble *bubble in self.rainbowBubbles) {
         [bubble moveBubble];
     }
 }
-
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -51,11 +67,11 @@
         self.opaque = YES;
         self.backgroundColor = [UIColor grayColor];
         self.rainbowBubbles = [[NSMutableArray alloc]init];
+        self.numberOfBubbles = 1;
         [self animate];
     }
     return self;
 }
-
 - (void)drawRect:(CGRect)rect
 {
     [self moveBubbles];
@@ -66,10 +82,11 @@
 {
     [super touchesBegan:touches withEvent:event];
     UITouch *touch = [touches anyObject];
-    RainbowBubble *rainbowBubble = [[RainbowBubble alloc]initWithLocationOfTouch:[touch locationInView:self]andViewFrame:self.frame];
-    if (rainbowBubble) {
-        [self.rainbowBubbles addObject:rainbowBubble];
+    for (int i = 0; i<self.numberOfBubbles; i++) {
+        RainbowBubble *rainbowBubble = [[RainbowBubble alloc]initWithLocationOfTouch:[touch locationInView:self]andViewFrame:self.frame];
+        if (rainbowBubble) {
+            [self.rainbowBubbles addObject:rainbowBubble];
+        }
     }
-    
 }
 @end
