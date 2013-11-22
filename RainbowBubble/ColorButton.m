@@ -8,14 +8,22 @@
 
 #import "ColorButton.h"
 
+@interface ColorButton()
+@property (nonatomic) NSString *title;
+@end
+
 @implementation ColorButton
 
 + (ColorButton *)buttonWithType:(UIButtonType)type
 {
     return [super buttonWithType:UIButtonTypeCustom];
 }
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
+- (id)initWithFrame:(CGRect)frame title:(NSString *)title
+{
+    self = [super initWithFrame:frame];
+    [self setTitle:title forState:UIControlStateNormal];
+    return self;
+}
 - (void)drawRect:(CGRect)rect
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
@@ -52,8 +60,20 @@
         
         CGContextSetFillColorWithColor(context, blueColor.CGColor);
         CGContextFillRect(context,CGRectMake(0, 16, 20, 4));
+    } else if ([self.currentTitle isEqual:@"clearButton"]) {
+        CGContextSetStrokeColorWithColor(context, redColor.CGColor);
+        //CGContextStrokeRect(context, CGRectMake(0, 0, 20, 20));
+        CGContextStrokeRectWithWidth(context, CGRectMake(0, 0, 20, 20), 3);
+        
+    } else if ([self.currentTitle isEqual:@"explosionButton"]){
+        CGContextSetFillColorWithColor(context, redColor.CGColor);
+        CGContextFillEllipseInRect(context, CGRectMake(0, 0, 10, 10));
+        CGContextSetFillColorWithColor(context, orangeColor.CGColor);
+        CGContextFillEllipseInRect(context, CGRectMake(10, 0, 10, 10));
+        CGContextSetFillColorWithColor(context, yellowColor.CGColor);
+        CGContextFillEllipseInRect(context, CGRectMake(0, 10, 10, 10));
+        CGContextSetFillColorWithColor(context, greenColor.CGColor);
+        CGContextFillEllipseInRect(context, CGRectMake(10, 10, 10, 10));
     }
-
 }
-
 @end
