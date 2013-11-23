@@ -12,6 +12,9 @@
 @interface RainbowBubbleView ()
 @property (nonatomic) NSMutableArray *rainbowBubbles;
 @property (nonatomic) int numberOfBubbles;
+@property (nonatomic) BOOL *touched;
+@property (nonatomic) CGPoint locationOfTouch;
+@property (nonatomic) NSTimer *bubbleTimer;
 @end
 
 @implementation RainbowBubbleView
@@ -68,6 +71,7 @@
         self.backgroundColor = [UIColor grayColor];
         self.rainbowBubbles = [[NSMutableArray alloc]init];
         self.numberOfBubbles = 1;
+        self.touched = NO;
         [self animate];
     }
     return self;
@@ -81,12 +85,25 @@
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesBegan:touches withEvent:event];
-    UITouch *touch = [touches anyObject];
-    for (int i = 0; i<self.numberOfBubbles; i++) {
-        RainbowBubble *rainbowBubble = [[RainbowBubble alloc]initWithLocationOfTouch:[touch locationInView:self]andViewFrame:self.frame];
-        if (rainbowBubble) {
-            [self.rainbowBubbles addObject:rainbowBubble];
-        }
+    self.locationOfTouch = [[touches anyObject] locationInView:self];
+    [self makeBubbles];
+}
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    [super touchesEnded:touches withEvent:event];    
+    [self.bubbleTimer invalidate];
+}
+- (void)makeBubbles
+{
+    self.bubbleTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/5.0 target:self selector:@selector(makeBubbles) userInfo:NULL repeats:NO];
+    [self makeBubble];
+    [self setNeedsDisplay];
+}
+- (void)makeBubble
+{
+    RainbowBubble *rainbowBubble = [[RainbowBubble alloc]initWithLocationOfTouch:self.locationOfTouch andViewFrame:self.frame];
+    if (rainbowBubble) {
+        [self.rainbowBubbles addObject:rainbowBubble];
     }
 }
 @end
