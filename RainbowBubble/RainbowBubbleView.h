@@ -14,4 +14,6 @@
 - (void)clearBubbles;
 - (void)changeBackgroundColor;
 - (void)bubbleExplosion;
+- (void)makeBubbles;
+- (void)makeBubble;
 @end

@@ -71,7 +71,8 @@
 {
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetStrokeColorWithColor(context, self.color.CGColor);
-    CGContextSetFillColorWithColor(context, self.outlineColor.CGColor);
+    //CGContextSetFillColorWithColor(context, self.outlineColor.CGColor);
+    CGContextSetFillColorWithColor(context, self.color.CGColor);
     CGContextStrokeEllipseInRect(context, self.frame);
     CGContextFillEllipseInRect(context, self.frame);
 }
