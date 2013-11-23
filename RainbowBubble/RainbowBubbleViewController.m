@@ -39,11 +39,13 @@
     [self.bubblesButton addTarget:self.rainbowBubbleView action:@selector(changeBubbleColors) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.bubblesButton];
     
+    /*
     self.explosionButton = [[ColorButton alloc]initWithFrame:CGRectOffset(self.backgroundButton.frame, 0, 80) title:@"explosionButton"];
     [self.explosionButton addTarget:self.rainbowBubbleView action:@selector(bubbleExplosion) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.explosionButton];
+     */
     
-    self.clearButton = [[ColorButton alloc]initWithFrame:CGRectOffset(self.backgroundButton.frame, 0, 120) title:@"clearButton"];
+    self.clearButton = [[ColorButton alloc]initWithFrame:CGRectOffset(self.backgroundButton.frame, 0, 80) title:@"clearButton"];
     [self.clearButton addTarget:self.rainbowBubbleView action:@selector(clearBubbles) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:self.clearButton];
     
