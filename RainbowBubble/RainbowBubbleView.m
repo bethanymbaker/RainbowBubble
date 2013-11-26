@@ -12,7 +12,6 @@
 @interface RainbowBubbleView ()
 @property (nonatomic) NSMutableArray *rainbowBubbles;
 @property (nonatomic) int numberOfBubbles;
-@property (nonatomic) BOOL *touched;
 @property (nonatomic) CGPoint locationOfTouch;
 @property (nonatomic) NSTimer *bubbleTimer;
 @property (strong, nonatomic) UILongPressGestureRecognizer *longPress;
@@ -21,10 +20,8 @@
 @implementation RainbowBubbleView
 - (void)bubbleExplosion
 {
-    if (self.numberOfBubbles==1) {
-        self.numberOfBubbles = 10;
-    } else {
-        self.numberOfBubbles = 1;
+    for (int i = 0; i<10; i++) {
+        [self makeBubble];
     }
 }
 - (void)changeBackgroundColor
@@ -69,16 +66,16 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.opaque = YES;
-        self.backgroundColor = [UIColor grayColor];
-        self.rainbowBubbles = [[NSMutableArray alloc]init];
-        self.numberOfBubbles = 1;
-        self.touched = NO;
+        self.backgroundColor = [UIColor blackColor];
+        _rainbowBubbles = [[NSMutableArray alloc]init];
+        _numberOfBubbles = 1;
+        _locationOfTouch = CGPointMake(0.0, 0.0);
         _longPress = [[UILongPressGestureRecognizer alloc]
                                                    initWithTarget:self
                                                    action:@selector(handleLongPress:)];
-        _longPress.minimumPressDuration = 0.5;
+        _longPress.minimumPressDuration = 0.25;
         [self addGestureRecognizer:_longPress];
-        
+
         [self animate];
     }
     return self;
@@ -97,25 +94,20 @@
     [self moveBubbles];
     [self drawBubbles];
 }
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesBegan:touches withEvent:event];
     self.locationOfTouch = [[touches anyObject] locationInView:self];
-    //[self makeBubbles];
     [self makeBubble];
-    [self setNeedsDisplay];
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];    
-    //[self.bubbleTimer invalidate];
 }
 - (void)makeBubbles
 {
-    self.bubbleTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/5.0 target:self selector:@selector(makeBubbles) userInfo:NULL repeats:NO];
+    self.bubbleTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/7.5 target:self selector:@selector(makeBubbles) userInfo:NULL repeats:NO];
     [self makeBubble];
-    [self setNeedsDisplay];
 }
 - (void)makeBubble
 {
@@ -123,5 +115,6 @@
     if (rainbowBubble) {
         [self.rainbowBubbles addObject:rainbowBubble];
     }
+    [self setNeedsDisplay];
 }
 @end
