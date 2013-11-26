@@ -47,6 +47,7 @@
 - (void)animate
 {
     [NSTimer scheduledTimerWithTimeInterval:1.0/30.0 target:self selector:@selector(animate) userInfo:NULL repeats:NO];
+    [self moveBubbles];
     [self setNeedsDisplay];
 }
 - (void)drawBubbles
@@ -91,7 +92,6 @@
 }
 - (void)drawRect:(CGRect)rect
 {
-    [self moveBubbles];
     [self drawBubbles];
 }
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
