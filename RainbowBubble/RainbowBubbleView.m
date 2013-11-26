@@ -14,6 +14,7 @@
 @property (nonatomic) int numberOfBubbles;
 @property (nonatomic) CGPoint locationOfTouch;
 @property (nonatomic) NSTimer *bubbleTimer;
+@property (strong, nonatomic) UILongPressGestureRecognizer *longPress;
 @end
 
 @implementation RainbowBubbleView
@@ -68,10 +69,29 @@
         self.backgroundColor = [UIColor blackColor];
         self.rainbowBubbles = [[NSMutableArray alloc]init];
         self.numberOfBubbles = 1;
+<<<<<<< HEAD
         self.locationOfTouch = CGPointMake(0.0, 0.0);
+=======
+        self.touched = NO;
+        _longPress = [[UILongPressGestureRecognizer alloc]
+                                                   initWithTarget:self
+                                                   action:@selector(handleLongPress:)];
+        _longPress.minimumPressDuration = 0.5;
+        [self addGestureRecognizer:_longPress];
+        
+>>>>>>> master
         [self animate];
     }
     return self;
+}
+-  (void)handleLongPress:(UILongPressGestureRecognizer*)sender
+{
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        [self.bubbleTimer invalidate];
+    }
+    else if (sender.state == UIGestureRecognizerStateBegan){
+        [self makeBubbles];
+    }
 }
 - (void)drawRect:(CGRect)rect
 {
@@ -83,12 +103,14 @@
 {
     [super touchesBegan:touches withEvent:event];
     self.locationOfTouch = [[touches anyObject] locationInView:self];
-    [self makeBubbles];
+    //[self makeBubbles];
+    [self makeBubble];
+    [self setNeedsDisplay];
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];    
-    [self.bubbleTimer invalidate];
+    //[self.bubbleTimer invalidate];
 }
 - (void)makeBubbles
 {
