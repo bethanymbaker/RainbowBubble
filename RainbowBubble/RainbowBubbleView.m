@@ -67,19 +67,15 @@
     if (self) {
         self.opaque = YES;
         self.backgroundColor = [UIColor blackColor];
-        self.rainbowBubbles = [[NSMutableArray alloc]init];
-        self.numberOfBubbles = 1;
-<<<<<<< HEAD
-        self.locationOfTouch = CGPointMake(0.0, 0.0);
-=======
-        self.touched = NO;
+        _rainbowBubbles = [[NSMutableArray alloc]init];
+        _numberOfBubbles = 1;
+        _locationOfTouch = CGPointMake(0.0, 0.0);
         _longPress = [[UILongPressGestureRecognizer alloc]
                                                    initWithTarget:self
                                                    action:@selector(handleLongPress:)];
-        _longPress.minimumPressDuration = 0.5;
+        _longPress.minimumPressDuration = 0.25;
         [self addGestureRecognizer:_longPress];
-        
->>>>>>> master
+
         [self animate];
     }
     return self;
@@ -98,25 +94,20 @@
     [self moveBubbles];
     [self drawBubbles];
 }
-
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesBegan:touches withEvent:event];
     self.locationOfTouch = [[touches anyObject] locationInView:self];
-    //[self makeBubbles];
     [self makeBubble];
-    [self setNeedsDisplay];
 }
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
     [super touchesEnded:touches withEvent:event];    
-    //[self.bubbleTimer invalidate];
 }
 - (void)makeBubbles
 {
     self.bubbleTimer = [NSTimer scheduledTimerWithTimeInterval:1.0/7.5 target:self selector:@selector(makeBubbles) userInfo:NULL repeats:NO];
     [self makeBubble];
-    [self setNeedsDisplay];
 }
 - (void)makeBubble
 {
@@ -124,5 +115,6 @@
     if (rainbowBubble) {
         [self.rainbowBubbles addObject:rainbowBubble];
     }
+    [self setNeedsDisplay];
 }
 @end
