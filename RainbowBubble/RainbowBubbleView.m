@@ -11,19 +11,12 @@
 
 @interface RainbowBubbleView ()
 @property (nonatomic) NSMutableArray *rainbowBubbles;
-@property (nonatomic) int numberOfBubbles;
 @property (nonatomic) CGPoint locationOfTouch;
 @property (nonatomic) NSTimer *bubbleTimer;
 @property (strong, nonatomic) UILongPressGestureRecognizer *longPress;
 @end
 
 @implementation RainbowBubbleView
-- (void)bubbleExplosion
-{
-    for (int i = 0; i<10; i++) {
-        [self makeBubble];
-    }
-}
 - (void)changeBackgroundColor
 {
     if ([self.backgroundColor isEqual:[UIColor grayColor]]) {
@@ -69,7 +62,6 @@
         self.opaque = YES;
         self.backgroundColor = [UIColor blackColor];
         _rainbowBubbles = [[NSMutableArray alloc]init];
-        _numberOfBubbles = 1;
         _locationOfTouch = CGPointMake(0.0, 0.0);
         _longPress = [[UILongPressGestureRecognizer alloc]
                                                    initWithTarget:self
